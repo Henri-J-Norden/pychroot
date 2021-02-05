@@ -10,6 +10,8 @@ pychroot 0.10.4 (2021-01-25)
 
 - Force chroot path parameter to be positional only.
 
+- Drop support for python 3.6 and 3.7.
+
 pychroot 0.10.3 (2020-12-22)
 ----------------------------
 
