@@ -6,8 +6,8 @@ omit = */_verinfo.py
 [paths]
 source =
 	src/pychroot
+	build/install/lib/python*/site-packages/pychroot
 	.tox/*/lib/python*/site-packages/pychroot
-	.tox/pypy*/site-packages/pychroot
 
 [report]
 show_missing = True
