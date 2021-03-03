@@ -14,11 +14,6 @@ setup(**dict(
     url='https://github.com/pkgcore/pychroot',
     license='BSD',
     platforms='Posix',
-    cmdclass=dict(
-        pkgdist_cmds,
-        test=pkgdist.pytest,
-        lint=pkgdist.pylint,
-    ),
     classifiers=[
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
