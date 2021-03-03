@@ -118,7 +118,7 @@ the following::
 
 .. |pypi| image:: https://img.shields.io/pypi/v/pychroot.svg
     :target: https://pypi.python.org/pypi/pychroot
-.. |test| image:: https://github.com/pkgcore/pychroot/workflows/Run%20tests/badge.svg
-    :target: https://github.com/pkgcore/pychroot/actions?query=workflow%3A%22Run+tests%22
+.. |test| image:: https://github.com/pkgcore/pychroot/workflows/test/badge.svg
+    :target: https://github.com/pkgcore/pychroot/actions?query=workflow%3A%22test%22
 .. |coverage| image:: https://codecov.io/gh/pkgcore/pychroot/branch/master/graph/badge.svg
     :target: https://codecov.io/gh/pkgcore/pychroot
