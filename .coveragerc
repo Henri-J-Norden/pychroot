@@ -1,13 +1,10 @@
 [run]
 source = pychroot
 branch = True
-omit = */_verinfo.py
+omit = src/*, tests/*
 
 [paths]
-source =
-	src/pychroot
-	build/install/lib/python*/site-packages/pychroot
-	.tox/*/lib/python*/site-packages/pychroot
+source = **/site-packages/pychroot
 
 [report]
 show_missing = True
