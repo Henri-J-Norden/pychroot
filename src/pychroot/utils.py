@@ -41,7 +41,7 @@ def getlogger(log, name):
 
 
 def bind(src, dest, chroot, create=False, log=None, readonly=False,
-         recursive=False, **_kwargs):
+         recursive=False, chmod=None, **_kwargs):
     """Set up a bind mount.
 
     :param src: The source location to mount.
@@ -94,6 +94,9 @@ def bind(src, dest, chroot, create=False, log=None, readonly=False,
         raise ChrootMountError(f'cannot bind mount from {src!r}', errno.ENOENT)
     elif not os.path.exists(dest):
         raise ChrootMountError(f'cannot bind mount to {dest!r}', errno.ENOENT)
+
+    if chmod:
+        os.chmod(dest, chmod)
 
     if src in fstypes:
         fstype = src
