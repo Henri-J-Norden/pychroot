@@ -39,7 +39,7 @@ class Chroot(SplitExec):
         '/etc/resolv.conf': {},
     })
 
-    def __init__(self, path, /, *, log=None, mountpoints=(), hostname=None, skip_chdir=False):
+    def __init__(self, path, /, *, log=None, mountpoints=(), hostname=None, skip_chdir=False, mkdir=True):
         super().__init__()
         self.log = getlogger(log, __name__)
         self.path = os.path.abspath(path)
@@ -51,6 +51,9 @@ class Chroot(SplitExec):
         else:
             self.mountpoints = dict(self.default_mounts)
             self.mountpoints.update(mountpoints)
+
+        if not os.path.exists(self.path) and mkdir:
+            os.makedirs(self.path)
 
         if not os.path.isdir(self.path):
             raise ChrootError(f'cannot change root directory to {path!r}', errno.ENOTDIR)
