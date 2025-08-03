@@ -113,9 +113,11 @@ def bind(src, dest, chroot, create=False, log=None, readonly=False,
             mount_flags.extend([MS_RDONLY])
         flags=reduce(operator.or_, mount_flags, 0)
         log.debug(f'  mount -t {fstype} {src} {dest} -o {flags} ({mount_flags}) data={mount_options}')
+        log.debug(f'dest stat before mount: {os.stat(dest)}')
         mount(source=src, target=dest, fstype=fstype,
               flags=flags,
               data=','.join(mount_options))
+        log.debug(f'dest stat after mount: {os.stat(dest)}')
     except OSError as e:
         raise ChrootMountError(
             f'failed mounting: mount -t {fstype} {src} {dest}', e.errno)
