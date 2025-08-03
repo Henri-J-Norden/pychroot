@@ -109,14 +109,13 @@ def bind(src, dest, chroot, create=False, log=None, readonly=False,
         log.debug('  bind mounting %r on %r', src, dest)
 
     try:
-        mount(source=src, target=dest, fstype=fstype,
-              flags=reduce(operator.or_, mount_flags, 0),
-              data=','.join(mount_options))
         if readonly:
             mount_flags.extend([MS_REMOUNT, MS_RDONLY])
-            mount(source=src, target=dest, fstype=fstype,
-                  flags=reduce(operator.or_, mount_flags, 0),
-                  data=','.join(mount_options))
+        flags=reduce(operator.or_, mount_flags, 0)
+        log.debug(f'  mount -t {fstype} {src} {dest} -o {flags} ({mount_flags}) data={mount_options}')
+        mount(source=src, target=dest, fstype=fstype,
+              flags=flags,
+              data=','.join(mount_options))
     except OSError as e:
         raise ChrootMountError(
             f'failed mounting: mount -t {fstype} {src} {dest}', e.errno)
