@@ -110,7 +110,7 @@ def bind(src, dest, chroot, create=False, log=None, readonly=False,
 
     try:
         if readonly:
-            mount_flags.extend([MS_REMOUNT, MS_RDONLY])
+            mount_flags.extend([MS_RDONLY])
         flags=reduce(operator.or_, mount_flags, 0)
         log.debug(f'  mount -t {fstype} {src} {dest} -o {flags} ({mount_flags}) data={mount_options}')
         mount(source=src, target=dest, fstype=fstype,
