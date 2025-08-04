@@ -104,7 +104,8 @@ class Chroot(SplitExec):
             # by default.
             kwargs.update({'user': True, 'net': True})
 
-        simple_unshare(pid=True, hostname=self.hostname, **kwargs)
+        # TODO: debug PID namespace breaking asyncio
+        simple_unshare(pid=False, hostname=self.hostname, **kwargs)
         self._mount()
         os.chroot(self.path)
         if not self.skip_chdir:
